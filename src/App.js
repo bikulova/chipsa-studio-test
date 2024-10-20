@@ -4,6 +4,8 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap-trial/ScrollTrigger";
 import { ScrollSmoother } from "gsap-trial/ScrollSmoother";
 
+gsap.registerPlugin(ScrollSmoother, ScrollTrigger)
+
 if (ScrollTrigger.isTouch !== 1) {
 
   ScrollSmoother.create({
