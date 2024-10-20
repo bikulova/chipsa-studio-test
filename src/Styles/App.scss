@@ -1,0 +1,130 @@
+@import "../../node_modules/bootstrap/scss/bootstrap.scss";
+@import url("https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap");
+
+$sides: "left", "top", "right", "bottom";
+$margins: 4, 6, 8, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30, 32, 34, 40, 48, 64;
+
+$primary-color: #363751;
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --index: calc(1vw + 1vh);
+	--color-header: #f4efec;
+	--color-text: #cdc6c3;
+	--gallery-gap: calc(var(--index) * 8.5)
+}
+
+
+@each $side in $sides {
+    @each $margin in $margins {
+        .fragment-margin-#{$side}-#{$margin} {
+            margin-#{$side}: #{$margin}px !important;
+        }
+    }
+}
+
+@each $margin in $margins {
+    .fragment-padding-#{$margin} {
+        padding: #{$margin}px !important;
+    }
+}
+
+@each $side in $sides {
+    @each $margin in $margins {
+        .fragment-padding-#{$side}-#{$margin} {
+            padding-#{$side}: #{$margin}px !important;
+        }
+    }
+}
+
+body {
+	overflow-x: hidden;
+    background-image: url(../Assets/img/bg.jpg);
+    font-family: "Raleway", sans-serif;
+	color: #fafafa;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: "Outfit", sans-serif;
+}
+
+.hero {
+    width: calc(var(--index) * 30);
+	position: absolute;
+	left: 37vw;
+	top: 2vh;
+	z-index: -1;
+}
+
+.container {
+	padding: 0vw;
+
+    .main-header {
+        height: 100vh;
+
+
+         .main-title {
+            font-size: calc(var(--index) * 8);
+            position: absolute;
+            width: min-content;
+            bottom: 12vh;
+            line-height: .9;
+            letter-spacing: -2px;
+        }
+    }
+}
+
+.gallery {
+	display: flex;
+
+    &__item {
+        max-width: calc(var(--index) * 21);
+        margin-bottom: var(--gallery-gap);
+        max-height: 180vh;
+        border-radius: 8px;
+    }
+
+    &__left {
+	    margin-top: calc(var(--gallery-gap) * 1.75);
+    }
+
+    &__right .gallery__item {
+        margin: 0;
+	    margin-top: var(--gallery-gap);
+    }
+}
+
+.gallery > * {
+	flex: 1;
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+}
+
+
+.content, .hero, .main-header, .gallery > * {
+	will-change: transform;
+}
+
+
+.text-block {
+	color: var(--color-text);
+	position: relative;
+
+    &__h {
+        font-size: 2rem;
+	line-height: 2.4rem;
+	color: var(--color-header);
+	margin-bottom: 1.5rem;
+    }
+
+    &__p {
+	line-height: 1.75;
+    }
+}
